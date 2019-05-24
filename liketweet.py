@@ -26,7 +26,7 @@ for status in api.search(q=searchWord, lang='ja', result_type='recent',tweet_mod
     if status.user.screen_name not in blocked_id:
         try:
             api.create_favorite(status.id)
-            print(status.user.name + " status_id:" + status.id + "をいいねしました")
+            print(status.user.name + " status_id:" + str(status.id) + "をいいねしました")
         except Exception as e:
             print(e)
 
