@@ -23,10 +23,10 @@ api = tweepy.API(auth)
 blocked_id = {"uiuiuieros","bokutoasobou175"}
 
 count = 3 #いいねの件数
-searchWord = "((vtuber OR バーチャル) (魂 OR 中の人) -雀 (オーディション OR 募集) -放り出された exclude:retweets exclude:replies) OR @eiofkljislnf"
+searchWord = "((vtuber OR バーチャル) (魂 OR 中の人) -雀 (オーディション OR 募集) -放り出された -最近回答した質問 exclude:retweets exclude:replies) OR @eiofkljislnf"
 search_result = api.search(q=searchWord, lang='ja', result_type='recent',tweet_mode="extended", count=100)
-for i in range(len(search_result)):
-    result = random.choice(search_result)
+random.shuffle(search_result)
+for result in search_result:
     if result.user.screen_name not in blocked_id:
         try:
             api.create_favorite(result.id)
