@@ -20,7 +20,7 @@ AS = os.environ.get('access_token_secret')
 auth = tweepy.OAuthHandler(CK, CS)
 auth.set_access_token(AT, AS)
 api = tweepy.API(auth)
-blocked_id = {"uiuiuieros","bokutoasobou175"}
+blocked_id = {"uiuiuieros","bokutoasobou175","yue_list"}
 
 count = 3 #いいねの件数
 searchWord = "((vtuber OR バーチャル) (魂 OR 中の人) -雀 (オーディション OR 募集) -放り出された -最近回答した質問 exclude:retweets exclude:replies) OR @eiofkljislnf"
