@@ -22,8 +22,14 @@ auth.set_access_token(AT, AS)
 api = tweepy.API(auth)
 blocked_id = {"uiuiuieros","bokutoasobou175","yue_list"}
 
+#And検索のキーワードを下記に記入
+swlist = ["(vtuber OR バーチャル)","(オーディション OR 募集)"]
+exlist = ["-雀","-放り出された","-最近回答した質問","-\"showroom-live\""]
+oplist = ["exclude:retweets", "exclude:replies"]
+searchWord = ' '.join(swlist + exlist + oplist)
+searchWord = "(" + searchWord + ") OR @eiofkljislnf" #ユーザ名を検索対象から除外するため
+
 count = 3 #いいねの件数
-searchWord = "((vtuber OR バーチャル) (魂 OR 中の人) -雀 (オーディション OR 募集) -放り出された -最近回答した質問 exclude:retweets exclude:replies) OR @eiofkljislnf"
 search_result = api.search(q=searchWord, lang='ja', result_type='recent',tweet_mode="extended", count=100)
 random.shuffle(search_result)
 for result in search_result:
