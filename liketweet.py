@@ -11,7 +11,7 @@
 
 import tweepy, os
 import datetime
-import random
+#import random
 
 CK = os.environ.get('consumer_key')
 CS = os.environ.get('consumer_secret')
@@ -31,7 +31,9 @@ searchWord = "(" + searchWord + ") OR @eiofkljislnf" #ユーザ名を検索対�
 
 count = 3 #いいねの件数
 search_result = api.search(q=searchWord, lang='ja', result_type='recent',tweet_mode="extended", count=100)
-random.shuffle(search_result)
+#random.shuffle(search_result)
+search_result.sort(key=lambda x: x.favorite_count, reverse=True) #いいね数が多い順にソート
+
 for result in search_result:
     if result.user.screen_name not in blocked_id:
         try:
